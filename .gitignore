@@ -1,3 +1,7 @@
 input/
 __pycache__/
 .ipynb_checkpoints/
+
+data/
+
+environment.txt
