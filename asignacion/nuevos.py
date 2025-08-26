@@ -18,6 +18,7 @@ class AsignacionNuevos(AsignacionNuevosAntiguos):
         super().__init__(data, "nuevos")
         self.data = data
         self.data[['cod_CNO', 'ipo']] = self.data.apply(self._reemplazar_codCNO_ipo, axis=1)
+        self.asignacion = pd.Dataframe()
         
         #Garantiza que al instanciar la clase, se calculen inmediatamente los recursos por cno.
         self.calcular_recursos_por_cno()
@@ -96,7 +97,7 @@ class AsignacionNuevos(AsignacionNuevosAntiguos):
         self.recursos_disponibles -= self.recursos_asignados
         self.asignacion = asignacion_por_ocupacion
 
-    def _ordenar_programas(self,usar_cod_cno=True):
+    def _ordenar_programas(self,usar_cod_cno=False):
         """
         Ordena los programas dentro del DataFrame según criterios establecidos.
         Si usar_cod_cno es True, cod_CNO se usará como primer criterio de orden.

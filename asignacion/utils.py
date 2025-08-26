@@ -1,6 +1,16 @@
 import os
 from datetime import datetime
 
+
+def imprimir_recursos_por_ruta(recursos: dict):
+    """Imprime los recursos por ruta en formato tabla con separadores de miles."""
+    print("{:<10} | {:>20}".format("Ruta", "Recursos"))
+    print("-" * 35)
+    for ruta, valor in recursos.items():
+        print("{:<10} | {:>20}".format(ruta, f"{int(valor):,}".replace(",", ".")))
+
+
+
 def exportar_log_errores(errores: list[str], nombre_archivo_log: str = "validacion.log") -> None:
     """
     Exporta una lista de errores a un archivo de log en ../output/logs/.

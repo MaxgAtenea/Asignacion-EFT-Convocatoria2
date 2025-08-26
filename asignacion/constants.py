@@ -1,7 +1,15 @@
+BOLSA_COMUN = 7_062_748_147
+
+PORCENTAJES_RUTA = {
+    "antiguos":  0.4,
+    "nuevos": 0.3,
+    "cerrados": 0.3
+}
+
 RECURSOS_POR_RUTA = {
-    "antiguos":  1_320_000_000,
-    "nuevos": 990_000_000,
-    "cerrados": 990_000_000
+    "antiguos":  BOLSA_COMUN*PORCENTAJES_RUTA['antiguos'],
+    "nuevos": BOLSA_COMUN*PORCENTAJES_RUTA['nuevos'],
+    "cerrados": BOLSA_COMUN*PORCENTAJES_RUTA['cerrados']
 }
 
 # Columna que especifica el valor del programa indexado

@@ -19,7 +19,9 @@ class AsignacionAntiguos(AsignacionNuevosAntiguos):
         """
         super().__init__(data, "antiguos")
         #TODO: Definir contrato
-        self.data = data
+        self.data = data.copy()
+        #TO DO: Este filtro es temporal, porque debería venir del contrato de la clase AsignacionBase()
+        self.data = self.data[self.data['isoeft_4d'].notna()]
         
         #Atributos para guardar los recursos de la primera y segunda asignacion de recursos
         self.primera_asignacion = pd.DataFrame()
@@ -30,10 +32,13 @@ class AsignacionAntiguos(AsignacionNuevosAntiguos):
         self.calcular_recursos_por_cno()
         #Ordenamos por ISOEFT (condición necesaria para la asignacion de recursos)
         self.ordenar_ocupaciones_por_isoeft()
+        #Garantiza que al instanciar la clase, se calcule la primera asignacion
+        self._asignar_recursos_primera_etapa()
+        
         #Garantiza que al instanciar la clase, se calcule la segunda asignacion e implicitamente la primera asignacion
-        self.asignar_recursos_segunda_etapa()
+        #self.asignar_recursos_segunda_etapa()
         #Identificar los programas con cupos disponibles después de la asignacion
-        self._identificar_programas_disponibles()      
+        #self._identificar_programas_disponibles()      
         
 
     def ordenar_ocupaciones_por_isoeft(self):
@@ -43,30 +48,34 @@ class AsignacionAntiguos(AsignacionNuevosAntiguos):
         Ordena un DataFrame por ['cod_CNO', 'ocupacion', 'IPO', 'isoeft_4d'],
         asegurando que las filas con NaN en 'isoeft_4d' queden al final del DataFrame completo.
 
+        CONTRATO:
+        1. Los programas no pueden venir con isoeft_4d igual a nan, vacío o un tipo distinto a float
+
         """
-        # Separar por presencia de NaN en isoeft_4d
+
+        # filtrar NaN en isoeft_4d: 
+        #TO DO: esta condicion se podrá eliminar una vez se incluya la verificacion en la lectura de los datos en AsignacionBase() ->base.py
         sin_nan = self.data[self.data['isoeft_4d'].notna()]
-        con_nan = self.data[self.data['isoeft_4d'].isna()]
     
         #Columnas para ordenar
         columnas = [
-            'ipo',
-            'cod_CNO',
-            'ocupacion',
-            'isoeft_4d',
-            COLUMNA_VALOR_PROGRAMA,
-            "numero_cupos_ofertar",
-            "duracion_horas_programa"
+            'ipo', #1
+            'cod_CNO', #2
+            'ocupacion', #3
+            'isoeft_4d', #4
+            COLUMNA_VALOR_PROGRAMA, #5 ->Regla de desempate
+            "numero_cupos_ofertar", #6 ->Regla de desempate
+            "duracion_horas_programa" #7 ->Regla de desempate
         ]
     
         orden = [
-            False,
-            True,
-            True,
-            False,
-            True,
-            False,
-            True
+            False, #1
+            True, #2
+            True, #3
+            False, #4
+            True, #5 ->Regla de desempate
+            False, #6 ->Regla de desempate
+            True #7 ->Regla de desempate
         ]
         
         # Ordenar las filas válidas
@@ -76,7 +85,7 @@ class AsignacionAntiguos(AsignacionNuevosAntiguos):
         )
     
         # Concatenar
-        self.data = pd.concat([sin_nan, con_nan], ignore_index=True)
+        self.data = sin_nan.reset_index(drop=True)
 
     def _asignar_recursos_primera_etapa(self):
         """

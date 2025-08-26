@@ -11,6 +11,7 @@ class AsignacionCerrados(AsignacionBase):
     def __init__(self, data):
         super().__init__(RECURSOS_POR_RUTA["cerrados"])
         self.data = data
+        self.asignacion = pd.DataFrame()
         
         #Ordenamos programas siguiendo criterios (condición necesaria y previa para la asignacion de recursos)
         self._ordenar_programas()     
@@ -42,7 +43,8 @@ class AsignacionCerrados(AsignacionBase):
         for idx, row in data.iterrows():
             costo = row[columna_valor_programa]
             cupos = min(row['numero_cupos_ofertar'], row[columna_cupos_maximos])
-    
+
+            #TO DO: esta condicion debería ser parte del contrato de la clase AsignacionBase()
             if pd.isna(costo) or costo <= 0 or pd.isna(cupos) or cupos <= 0:
                 data.at[idx, 'saldo_total_remanente'] = saldo_total
                 continue
@@ -72,7 +74,7 @@ class AsignacionCerrados(AsignacionBase):
 
         self.asignacion = data
 
-    def _ordenar_programas(self,usar_cod_cno=True):
+    def _ordenar_programas(self,usar_cod_cno=False):
         """
         Ordena los programas dentro del DataFrame según criterios establecidos.
         Si usar_cod_cno es True, cod_CNO se usará como primer criterio de orden.

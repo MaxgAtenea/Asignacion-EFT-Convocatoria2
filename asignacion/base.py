@@ -64,7 +64,6 @@ class AsignacionBase:
         """
 
         ruta_archivo_externo = self.path_load +  nombre_archivo_externo
-        ruta_archivo_complementario = self.path_load + nombre_archivo_complementario
         
         #Validar que existe ruta_archivo_externo
         if not os.path.exists(ruta_archivo_externo):
@@ -78,7 +77,9 @@ class AsignacionBase:
         Programas_EFT = Programas_EFT.astype(TIPO_COLUMNAS_MAPPING_EXTERNO)
     
         # Si hay archivo complementario, cargar y combinar
-        if ruta_archivo_complementario is not None:
+        if nombre_archivo_complementario is not None:
+
+            ruta_archivo_complementario = self.path_load + nombre_archivo_complementario
             
             #Validar que existe el ruta_archivo_complementario
             if not os.path.exists(ruta_archivo_complementario):
