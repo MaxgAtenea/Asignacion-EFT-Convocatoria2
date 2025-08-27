@@ -42,8 +42,8 @@ class AsignacionCerrados(AsignacionBase):
         """
         data = self.data.copy()
         
-        data['cupos_asignados_2E'] = 0  
-        data['recurso_asignado_2E'] = 0.0
+        data['cupos_asignados'] = 0  
+        data['recurso_asignado'] = 0.0
         data['saldo_total_remanente'] = 0.0
     
     
@@ -61,16 +61,16 @@ class AsignacionCerrados(AsignacionBase):
             recurso_necesario = costo * cupos
     
             if saldo_total >= recurso_necesario:
-                data.at[idx, 'cupos_asignados_2E'] = cupos
-                data.at[idx, 'recurso_asignado_2E'] = recurso_necesario
+                data.at[idx, 'cupos_asignados'] = cupos
+                data.at[idx, 'recurso_asignado'] = recurso_necesario
                 saldo_total -= recurso_necesario
             else:
                 
                 cupos_posibles = saldo_total // costo
                 recurso_asignado = cupos_posibles * costo
                 
-                data.at[idx, 'cupos_asignados_2E'] = cupos_posibles
-                data.at[idx, 'recurso_asignado_2E'] = recurso_asignado
+                data.at[idx, 'cupos_asignados'] = cupos_posibles
+                data.at[idx, 'recurso_asignado'] = recurso_asignado
                 saldo_total -= recurso_asignado
     
             data.at[idx, 'saldo_total_remanente'] = saldo_total
@@ -79,8 +79,8 @@ class AsignacionCerrados(AsignacionBase):
                 break
                 
         # Paso 5: Calcular recursos asignados
-        data['recurso_asignado_2E'] = data['cupos_asignados_2E'] * data[COLUMNA_VALOR_PROGRAMA]
-        data['cupos_sobrantes_2E'] = data['numero_cupos_ofertar'] - data['cupos_asignados_2E']
+        data['recurso_asignado'] = data['cupos_asignados'] * data[COLUMNA_VALOR_PROGRAMA]
+        data['cupos_sobrantes'] = data['numero_cupos_ofertar'] - data['cupos_asignados']
         
         self.recursos_disponibles = saldo_total 
         self.recursos_asignados = self.recursos_iniciales - self.recursos_disponibles
@@ -133,7 +133,7 @@ class AsignacionCerrados(AsignacionBase):
         data = self.primera_asignacion.copy()
         
         grupos_cerrados_remanente = data[
-            data['cupos_sobrantes_2E'] > 0
+            data['cupos_sobrantes'] > 0
         ].reset_index(drop=True)
 
         self.programas_remanente = grupos_cerrados_remanente

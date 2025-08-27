@@ -44,7 +44,7 @@ def merge_without_duplicates(
     df2: pd.DataFrame,
     df2_columns: list,
     merge_on: list,
-    suffixes: tuple = ("_first", "_second"),
+    suffixes: tuple = ("_first_iteration", "_second_iteration"),
     how: str = "outer",
     indicator: bool = True
 ) -> pd.DataFrame:
@@ -92,3 +92,30 @@ def merge_without_duplicates(
 
     return merged
 
+
+
+def export_to_excel(dataframes: dict, filename: str = "../output/results/asignacion_rutas.xlsx") -> None:
+    """
+    Export multiple DataFrames to one Excel file, each in its own sheet.
+
+    Parameters
+    ----------
+    dataframes : dict
+        Dictionary where keys are sheet names (str) and values are DataFrames.
+        Example:
+            {
+                "Antiguos": asignacion_completa_antiguos,
+                "Nuevos": asignacion_completa_nuevos,
+                "Cerrados": asignacion_completa_cerrados
+            }
+    filename : str, optional
+        Name of the Excel file to create, by default "output.xlsx".
+
+    Returns
+    -------
+    None
+        Writes an Excel file with each DataFrame in a separate sheet.
+    """
+    with pd.ExcelWriter(filename, engine="openpyxl") as writer:
+        for sheet_name, df in dataframes.items():
+            df.to_excel(writer, sheet_name=sheet_name, index=False)
