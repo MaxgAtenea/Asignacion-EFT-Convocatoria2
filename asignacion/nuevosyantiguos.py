@@ -10,7 +10,7 @@ class AsignacionNuevosAntiguos(AsignacionBase):
     Clase con los métodos para gestionar la asignación de recursos para la ruta 'Antiguos' o 'Nuevos'.
     """
     
-    def __init__(self, data, nombre_ruta):
+    def __init__(self, data, nombre_ruta, recursos_iniciales = None):
         """
         TO DO: Descripcion
 
@@ -18,8 +18,11 @@ class AsignacionNuevosAntiguos(AsignacionBase):
         - data (pandas dataframe): Dataframe con la inforamcion de los programas Antiguos
         - nombre_ruta: el nombre de la ruta como se especifica en las llaves de constants.RECURSOS_POR_RUTA
         """
-        
-        super().__init__(RECURSOS_POR_RUTA[nombre_ruta])
+        if recursos_iniciales:
+            super().__init__(recursos_iniciales)
+        else:
+            super().__init__(RECURSOS_POR_RUTA[nombre_ruta])
+            
         self.data = data
         self.recursosxcno = pd.DataFrame()
         self.nombre_ruta = nombre_ruta

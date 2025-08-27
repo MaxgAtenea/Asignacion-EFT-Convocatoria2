@@ -10,14 +10,18 @@ class AsignacionAntiguos(AsignacionNuevosAntiguos):
     Clase encargada de gestionar la asignación de recursos para la ruta 'Antiguos'.
     """
 
-    def __init__(self, data: pd.DataFrame):
+    def __init__(self, data: pd.DataFrame, recursos_iniciales = None):
         """
         Inicializa la asignación con los recursos disponibles específicos para la ruta antiguos.
 
         Parameters:
         - data (pandas dataframe): Dataframe con la inforamcion de los programas Antiguos
         """
-        super().__init__(data, "antiguos")
+        if recursos_iniciales:
+            super().__init__(data, "antiguos", recursos_iniciales = recursos_iniciales)
+        else:
+            super().__init__(data, "antiguos")
+
         #TODO: Definir contrato
         self.data = data.copy()
         #TO DO: Este filtro es temporal, porque debería venir del contrato de la clase AsignacionBase()
@@ -25,9 +29,8 @@ class AsignacionAntiguos(AsignacionNuevosAntiguos):
         
         #Atributos para guardar los recursos de la primera y segunda asignacion de recursos
         self.primera_asignacion = pd.DataFrame()
-        self.segunda_asignacion = pd.DataFrame()
+        #self.segunda_asignacion = pd.DataFrame()
 
-        
         #Garantiza que al instanciar la clase, se calculen inmediatamente los recursos por cno.
         self.calcular_recursos_por_cno()
         #Ordenamos por ISOEFT (condición necesaria para la asignacion de recursos)
@@ -37,8 +40,9 @@ class AsignacionAntiguos(AsignacionNuevosAntiguos):
         
         #Garantiza que al instanciar la clase, se calcule la segunda asignacion e implicitamente la primera asignacion
         #self.asignar_recursos_segunda_etapa()
+        
         #Identificar los programas con cupos disponibles después de la asignacion
-        #self._identificar_programas_disponibles()      
+        self._identificar_programas_disponibles()      
         
 
     def ordenar_ocupaciones_por_isoeft(self):
@@ -123,8 +127,9 @@ class AsignacionAntiguos(AsignacionNuevosAntiguos):
                     saldo -= cupos_asignables * costo_unitario
                     break
     
-        # Paso 3: Calcular recursos efectivamente asignados por programa
+        # Paso 3: Calcular recursos efectivamente asignados por programa y cupos restantes por asignar
         data['recurso_asignado_2E'] = data['cupos_asignados_2E'] * data[COLUMNA_VALOR_PROGRAMA]
+        data['cupos_sobrantes_2E'] = data['numero_cupos_ofertar'] - data['cupos_asignados_2E']
     
         # Paso 4: Agrupar para obtener resumen de asignaciones por ocupacion
         asignacion_por_ocupacion = data.groupby(['cod_CNO', 'ocupacion']).agg(
@@ -157,9 +162,11 @@ class AsignacionAntiguos(AsignacionNuevosAntiguos):
         self.primera_asignacion = data
         
         return asignacion_por_ocupacion
-        
+    
     def asignar_recursos_segunda_etapa(self):
         """
+        DEPRECATED PARA LA SEGUNDA CONVOCATORIA DE EFT 
+        
         Asigna recursos sobrantes de la segunda etapa a programas priorizados en una tercera etapa,
         usando una bolsa común. Actualiza el DataFrame original con asignaciones adicionales.
         # TODO: 
@@ -215,12 +222,12 @@ class AsignacionAntiguos(AsignacionNuevosAntiguos):
         
     def _identificar_programas_disponibles(self):
         """
-        Identifica cuales programas después del la asignación quedaron con cupos disponibles.
+        Identifica cuales programas después del la primera asignación quedaron con cupos disponibles.
         """        
-        data = self.asignacion.copy()
+        data = self.primera_asignacion.copy()
         
         antiguos_remanente = data[
-            data['numero_cupos_ofertar'] - data['Total_Cupos_Asignados'] > 0
+            data['cupos_sobrantes_2E'] > 0
         ].reset_index(drop=True)
         
         self.programas_remanente = antiguos_remanente

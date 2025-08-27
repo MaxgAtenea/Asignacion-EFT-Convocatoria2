@@ -205,11 +205,18 @@ class AsignacionBase:
         
         return rutas_dict 
 
-    def _actualizar_bolsa_comun(self,bolsa_antiguos, bolsa_nuevos, bolsa_cerrados):
+
+    def actualizar_recursos_iniciales(self,recursos_iniciales):
+        """
+        Actualiza los recursos iniciales dados por parametro
+        """
+        self.recursos_iniciales = recursos_iniciales
+
+    def actualizar_bolsa_comun(self,bolsa_comun):
         """
         Calcula la bolsa comun a partir de los recursos sobrantes de las 3 rutas.
         """
-        self.bolsa_comun = bolsa_antiguos + bolsa_nuevos + bolsa_cerrados
+        self.bolsa_comun_disponible = bolsa_comun
                 
         
     def asignar_recursos(self):

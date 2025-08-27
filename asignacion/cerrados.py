@@ -2,16 +2,25 @@ import pandas as pd
 from . import constants
 from .base import AsignacionBase
 
+from .constants import COLUMNA_VALOR_PROGRAMA
+from .constants import RECURSOS_POR_RUTA
+from .constants import COLUMNA_CUPOS_MAXIMOS
+
 class AsignacionCerrados(AsignacionBase):
     """
     ## TODO: Terminar de escribir el objetivo de la clase
     Clase encargada de gestionar la asignación de recursos para la ruta 'Cerrados'.
     """
 
-    def __init__(self, data):
-        super().__init__(RECURSOS_POR_RUTA["cerrados"])
+    def __init__(self, data, recursos_iniciales =  None):
+        
+        if recursos_iniciales:
+            super().__init__(recursos_iniciales)
+        else:
+            super().__init__(RECURSOS_POR_RUTA["cerrados"])
+        
         self.data = data
-        self.asignacion = pd.DataFrame()
+        self.primera_asignacion = pd.DataFrame()
         
         #Ordenamos programas siguiendo criterios (condición necesaria y previa para la asignacion de recursos)
         self._ordenar_programas()     
@@ -41,8 +50,8 @@ class AsignacionCerrados(AsignacionBase):
         saldo_total = self.recursos_iniciales
     
         for idx, row in data.iterrows():
-            costo = row[columna_valor_programa]
-            cupos = min(row['numero_cupos_ofertar'], row[columna_cupos_maximos])
+            costo = row[COLUMNA_VALOR_PROGRAMA]
+            cupos = min(row['numero_cupos_ofertar'], row[COLUMNA_CUPOS_MAXIMOS])
 
             #TO DO: esta condicion debería ser parte del contrato de la clase AsignacionBase()
             if pd.isna(costo) or costo <= 0 or pd.isna(cupos) or cupos <= 0:
@@ -68,11 +77,15 @@ class AsignacionCerrados(AsignacionBase):
     
             if saldo_total <= 0:
                 break
-
+                
+        # Paso 5: Calcular recursos asignados
+        data['recurso_asignado_2E'] = data['cupos_asignados_2E'] * data[COLUMNA_VALOR_PROGRAMA]
+        data['cupos_sobrantes_2E'] = data['numero_cupos_ofertar'] - data['cupos_asignados_2E']
+        
         self.recursos_disponibles = saldo_total 
         self.recursos_asignados = self.recursos_iniciales - self.recursos_disponibles
 
-        self.asignacion = data
+        self.primera_asignacion = data
 
     def _ordenar_programas(self,usar_cod_cno=False):
         """
@@ -117,10 +130,10 @@ class AsignacionCerrados(AsignacionBase):
         """
         Identifica cuales programas después del la asignación quedaron con cupos disponibles.
         """        
-        data = self.asignacion.copy()
+        data = self.primera_asignacion.copy()
         
         grupos_cerrados_remanente = data[
-            data['numero_cupos_ofertar'] - data['cupos_asignados_2E'] > 0
+            data['cupos_sobrantes_2E'] > 0
         ].reset_index(drop=True)
 
         self.programas_remanente = grupos_cerrados_remanente

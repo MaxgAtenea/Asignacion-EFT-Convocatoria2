@@ -14,11 +14,16 @@ class AsignacionNuevos(AsignacionNuevosAntiguos):
     #TODO: no debería hacerse el .apply(reemplazar_codigo,axis=1) si se pretende generalizar el codigo
     """
 
-    def __init__(self, data):
-        super().__init__(data, "nuevos")
+    def __init__(self, data, recursos_iniciales = None):
+        if recursos_iniciales:
+            super().__init__(data, "nuevos", recursos_iniciales = recursos_iniciales)
+        else:
+            super().__init__(data, "nuevos")
+
         self.data = data
         self.data[['cod_CNO', 'ipo']] = self.data.apply(self._reemplazar_codCNO_ipo, axis=1)
-        self.asignacion = pd.Dataframe()
+        self.asignacion_por_ocupacion = pd.DataFrame()
+        self.primera_asignacion = pd.DataFrame()
         
         #Garantiza que al instanciar la clase, se calculen inmediatamente los recursos por cno.
         self.calcular_recursos_por_cno()
@@ -66,6 +71,7 @@ class AsignacionNuevos(AsignacionNuevosAntiguos):
         
         # Paso 5: Calcular recursos asignados
         data['recurso_asignado_2E'] = data['cupos_asignados_2E'] * data[COLUMNA_VALOR_PROGRAMA]
+        data['cupos_sobrantes_2E'] = data['numero_cupos_ofertar'] - data['cupos_asignados_2E']
         
         # Paso 6: Agrupar para obtener resumen de asignaciones por ocupacion
         asignacion_por_ocupacion = data.groupby('cod_CNO').agg(
@@ -95,7 +101,8 @@ class AsignacionNuevos(AsignacionNuevosAntiguos):
         
         self.recursos_asignados = asignacion_por_ocupacion['recurso_asignado_2E'].sum()
         self.recursos_disponibles -= self.recursos_asignados
-        self.asignacion = asignacion_por_ocupacion
+        self.asignacion_por_ocupacion = asignacion_por_ocupacion
+        self.primera_asignacion = data
 
     def _ordenar_programas(self,usar_cod_cno=False):
         """
@@ -151,10 +158,10 @@ class AsignacionNuevos(AsignacionNuevosAntiguos):
         """
         Identifica cuales programas después del la asignación quedaron con cupos disponibles.
         """
-        data = self.asignacion.copy()
+        data = self.primera_asignacion.copy()
         
         nuevos_remanente = data[
-            data['numero_cupos_ofertar'] - data['cupos_asignados_2E'] > 0
+            data['cupos_sobrantes_2E'] > 0
         ].reset_index(drop=True)
 
         self.programas_remanente = nuevos_remanente

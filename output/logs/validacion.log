@@ -348,3 +348,163 @@
 - Tipo incorrecto en 'DIRECCIÓN DE LA SEDE DONDE SE IMPARTIRÁ EL PROGRAMA': se esperaba 'str', se encontró 'object'
 - Tipo incorrecto en 'Ocupación': se esperaba 'str', se encontró 'object'
 - Tipo incorrecto en 'Ruta habilitada': se esperaba 'str', se encontró 'object'
+
+--- LOG DE VALIDACIÓN (2025-08-27 08:40:57.427540): ---
+- Columnas con espacios al inicio o final: ['CÓDIGO DE INSTITUCIÓN ', 'TELÉFONO IES/IETDH ', 'ESPECIFIQUE LOS COSTOS DE ADMISIÓN ', 'NÚMERO DE CUPOS MÁXIMO PERMITIDO POR EL ACTO ADMINISTRATIVO DE RECONOCIMIENTO DEL PROGRAMA O EL DOCUMENTO QUE SOPORTE EL CUPO MÁXIMO APROBADO POR LA SECRETARIA  ']
+- Columnas con valores nulos: ['CÓDIGO SIET DEL PROGRAMA A OFERTAR (SOLO APLICA PARA PROGRAMAS ANTIGUOS)']
+- Tipo incorrecto en 'CÓDIGO SIET DEL PROGRAMA A OFERTAR (SOLO APLICA PARA PROGRAMAS ANTIGUOS)': se esperaba 'Int64', se encontró 'float64'
+- Tipo incorrecto en 'NOMBRE PROGRAMA SEGÚN REGISTRO SECRETARÍA DE EDUCACIÓN': se esperaba 'str', se encontró 'object'
+- Tipo incorrecto en 'NOMBRE DE LA INSTITUCÓN (INFORMACIÓN OBTENIDA DE SIET)': se esperaba 'str', se encontró 'object'
+- Tipo incorrecto en 'DIRECCIÓN DE LA SEDE DONDE SE IMPARTIRÁ EL PROGRAMA': se esperaba 'str', se encontró 'object'
+- Tipo incorrecto en 'Ocupación': se esperaba 'str', se encontró 'object'
+- Tipo incorrecto en 'Ruta habilitada': se esperaba 'str', se encontró 'object'
+
+--- LOG DE VALIDACIÓN (2025-08-27 08:42:28.485488): ---
+- Columnas con espacios al inicio o final: ['CÓDIGO DE INSTITUCIÓN ', 'TELÉFONO IES/IETDH ', 'ESPECIFIQUE LOS COSTOS DE ADMISIÓN ', 'NÚMERO DE CUPOS MÁXIMO PERMITIDO POR EL ACTO ADMINISTRATIVO DE RECONOCIMIENTO DEL PROGRAMA O EL DOCUMENTO QUE SOPORTE EL CUPO MÁXIMO APROBADO POR LA SECRETARIA  ']
+- Columnas con valores nulos: ['CÓDIGO SIET DEL PROGRAMA A OFERTAR (SOLO APLICA PARA PROGRAMAS ANTIGUOS)']
+- Tipo incorrecto en 'CÓDIGO SIET DEL PROGRAMA A OFERTAR (SOLO APLICA PARA PROGRAMAS ANTIGUOS)': se esperaba 'Int64', se encontró 'float64'
+- Tipo incorrecto en 'NOMBRE PROGRAMA SEGÚN REGISTRO SECRETARÍA DE EDUCACIÓN': se esperaba 'str', se encontró 'object'
+- Tipo incorrecto en 'NOMBRE DE LA INSTITUCÓN (INFORMACIÓN OBTENIDA DE SIET)': se esperaba 'str', se encontró 'object'
+- Tipo incorrecto en 'DIRECCIÓN DE LA SEDE DONDE SE IMPARTIRÁ EL PROGRAMA': se esperaba 'str', se encontró 'object'
+- Tipo incorrecto en 'Ocupación': se esperaba 'str', se encontró 'object'
+- Tipo incorrecto en 'Ruta habilitada': se esperaba 'str', se encontró 'object'
+
+--- LOG DE VALIDACIÓN (2025-08-27 08:49:43.549135): ---
+- Columnas con espacios al inicio o final: ['CÓDIGO DE INSTITUCIÓN ', 'TELÉFONO IES/IETDH ', 'ESPECIFIQUE LOS COSTOS DE ADMISIÓN ', 'NÚMERO DE CUPOS MÁXIMO PERMITIDO POR EL ACTO ADMINISTRATIVO DE RECONOCIMIENTO DEL PROGRAMA O EL DOCUMENTO QUE SOPORTE EL CUPO MÁXIMO APROBADO POR LA SECRETARIA  ']
+- Columnas con valores nulos: ['CÓDIGO SIET DEL PROGRAMA A OFERTAR (SOLO APLICA PARA PROGRAMAS ANTIGUOS)']
+- Tipo incorrecto en 'CÓDIGO SIET DEL PROGRAMA A OFERTAR (SOLO APLICA PARA PROGRAMAS ANTIGUOS)': se esperaba 'Int64', se encontró 'float64'
+- Tipo incorrecto en 'NOMBRE PROGRAMA SEGÚN REGISTRO SECRETARÍA DE EDUCACIÓN': se esperaba 'str', se encontró 'object'
+- Tipo incorrecto en 'NOMBRE DE LA INSTITUCÓN (INFORMACIÓN OBTENIDA DE SIET)': se esperaba 'str', se encontró 'object'
+- Tipo incorrecto en 'DIRECCIÓN DE LA SEDE DONDE SE IMPARTIRÁ EL PROGRAMA': se esperaba 'str', se encontró 'object'
+- Tipo incorrecto en 'Ocupación': se esperaba 'str', se encontró 'object'
+- Tipo incorrecto en 'Ruta habilitada': se esperaba 'str', se encontró 'object'
+
+--- LOG DE VALIDACIÓN (2025-08-27 08:50:46.911713): ---
+- Columnas con espacios al inicio o final: ['CÓDIGO DE INSTITUCIÓN ', 'TELÉFONO IES/IETDH ', 'ESPECIFIQUE LOS COSTOS DE ADMISIÓN ', 'NÚMERO DE CUPOS MÁXIMO PERMITIDO POR EL ACTO ADMINISTRATIVO DE RECONOCIMIENTO DEL PROGRAMA O EL DOCUMENTO QUE SOPORTE EL CUPO MÁXIMO APROBADO POR LA SECRETARIA  ']
+- Columnas con valores nulos: ['CÓDIGO SIET DEL PROGRAMA A OFERTAR (SOLO APLICA PARA PROGRAMAS ANTIGUOS)']
+- Tipo incorrecto en 'CÓDIGO SIET DEL PROGRAMA A OFERTAR (SOLO APLICA PARA PROGRAMAS ANTIGUOS)': se esperaba 'Int64', se encontró 'float64'
+- Tipo incorrecto en 'NOMBRE PROGRAMA SEGÚN REGISTRO SECRETARÍA DE EDUCACIÓN': se esperaba 'str', se encontró 'object'
+- Tipo incorrecto en 'NOMBRE DE LA INSTITUCÓN (INFORMACIÓN OBTENIDA DE SIET)': se esperaba 'str', se encontró 'object'
+- Tipo incorrecto en 'DIRECCIÓN DE LA SEDE DONDE SE IMPARTIRÁ EL PROGRAMA': se esperaba 'str', se encontró 'object'
+- Tipo incorrecto en 'Ocupación': se esperaba 'str', se encontró 'object'
+- Tipo incorrecto en 'Ruta habilitada': se esperaba 'str', se encontró 'object'
+
+--- LOG DE VALIDACIÓN (2025-08-27 08:51:42.327275): ---
+- Columnas con espacios al inicio o final: ['CÓDIGO DE INSTITUCIÓN ', 'TELÉFONO IES/IETDH ', 'ESPECIFIQUE LOS COSTOS DE ADMISIÓN ', 'NÚMERO DE CUPOS MÁXIMO PERMITIDO POR EL ACTO ADMINISTRATIVO DE RECONOCIMIENTO DEL PROGRAMA O EL DOCUMENTO QUE SOPORTE EL CUPO MÁXIMO APROBADO POR LA SECRETARIA  ']
+- Columnas con valores nulos: ['CÓDIGO SIET DEL PROGRAMA A OFERTAR (SOLO APLICA PARA PROGRAMAS ANTIGUOS)']
+- Tipo incorrecto en 'CÓDIGO SIET DEL PROGRAMA A OFERTAR (SOLO APLICA PARA PROGRAMAS ANTIGUOS)': se esperaba 'Int64', se encontró 'float64'
+- Tipo incorrecto en 'NOMBRE PROGRAMA SEGÚN REGISTRO SECRETARÍA DE EDUCACIÓN': se esperaba 'str', se encontró 'object'
+- Tipo incorrecto en 'NOMBRE DE LA INSTITUCÓN (INFORMACIÓN OBTENIDA DE SIET)': se esperaba 'str', se encontró 'object'
+- Tipo incorrecto en 'DIRECCIÓN DE LA SEDE DONDE SE IMPARTIRÁ EL PROGRAMA': se esperaba 'str', se encontró 'object'
+- Tipo incorrecto en 'Ocupación': se esperaba 'str', se encontró 'object'
+- Tipo incorrecto en 'Ruta habilitada': se esperaba 'str', se encontró 'object'
+
+--- LOG DE VALIDACIÓN (2025-08-27 08:53:04.779783): ---
+- Columnas con espacios al inicio o final: ['CÓDIGO DE INSTITUCIÓN ', 'TELÉFONO IES/IETDH ', 'ESPECIFIQUE LOS COSTOS DE ADMISIÓN ', 'NÚMERO DE CUPOS MÁXIMO PERMITIDO POR EL ACTO ADMINISTRATIVO DE RECONOCIMIENTO DEL PROGRAMA O EL DOCUMENTO QUE SOPORTE EL CUPO MÁXIMO APROBADO POR LA SECRETARIA  ']
+- Columnas con valores nulos: ['CÓDIGO SIET DEL PROGRAMA A OFERTAR (SOLO APLICA PARA PROGRAMAS ANTIGUOS)']
+- Tipo incorrecto en 'CÓDIGO SIET DEL PROGRAMA A OFERTAR (SOLO APLICA PARA PROGRAMAS ANTIGUOS)': se esperaba 'Int64', se encontró 'float64'
+- Tipo incorrecto en 'NOMBRE PROGRAMA SEGÚN REGISTRO SECRETARÍA DE EDUCACIÓN': se esperaba 'str', se encontró 'object'
+- Tipo incorrecto en 'NOMBRE DE LA INSTITUCÓN (INFORMACIÓN OBTENIDA DE SIET)': se esperaba 'str', se encontró 'object'
+- Tipo incorrecto en 'DIRECCIÓN DE LA SEDE DONDE SE IMPARTIRÁ EL PROGRAMA': se esperaba 'str', se encontró 'object'
+- Tipo incorrecto en 'Ocupación': se esperaba 'str', se encontró 'object'
+- Tipo incorrecto en 'Ruta habilitada': se esperaba 'str', se encontró 'object'
+
+--- LOG DE VALIDACIÓN (2025-08-27 09:31:49.351487): ---
+- Columnas con espacios al inicio o final: ['CÓDIGO DE INSTITUCIÓN ', 'TELÉFONO IES/IETDH ', 'ESPECIFIQUE LOS COSTOS DE ADMISIÓN ', 'NÚMERO DE CUPOS MÁXIMO PERMITIDO POR EL ACTO ADMINISTRATIVO DE RECONOCIMIENTO DEL PROGRAMA O EL DOCUMENTO QUE SOPORTE EL CUPO MÁXIMO APROBADO POR LA SECRETARIA  ']
+- Columnas con valores nulos: ['CÓDIGO SIET DEL PROGRAMA A OFERTAR (SOLO APLICA PARA PROGRAMAS ANTIGUOS)']
+- Tipo incorrecto en 'CÓDIGO SIET DEL PROGRAMA A OFERTAR (SOLO APLICA PARA PROGRAMAS ANTIGUOS)': se esperaba 'Int64', se encontró 'float64'
+- Tipo incorrecto en 'NOMBRE PROGRAMA SEGÚN REGISTRO SECRETARÍA DE EDUCACIÓN': se esperaba 'str', se encontró 'object'
+- Tipo incorrecto en 'NOMBRE DE LA INSTITUCÓN (INFORMACIÓN OBTENIDA DE SIET)': se esperaba 'str', se encontró 'object'
+- Tipo incorrecto en 'DIRECCIÓN DE LA SEDE DONDE SE IMPARTIRÁ EL PROGRAMA': se esperaba 'str', se encontró 'object'
+- Tipo incorrecto en 'Ocupación': se esperaba 'str', se encontró 'object'
+- Tipo incorrecto en 'Ruta habilitada': se esperaba 'str', se encontró 'object'
+
+--- LOG DE VALIDACIÓN (2025-08-27 09:44:09.481778): ---
+- Columnas con espacios al inicio o final: ['CÓDIGO DE INSTITUCIÓN ', 'TELÉFONO IES/IETDH ', 'ESPECIFIQUE LOS COSTOS DE ADMISIÓN ', 'NÚMERO DE CUPOS MÁXIMO PERMITIDO POR EL ACTO ADMINISTRATIVO DE RECONOCIMIENTO DEL PROGRAMA O EL DOCUMENTO QUE SOPORTE EL CUPO MÁXIMO APROBADO POR LA SECRETARIA  ']
+- Columnas con valores nulos: ['CÓDIGO SIET DEL PROGRAMA A OFERTAR (SOLO APLICA PARA PROGRAMAS ANTIGUOS)']
+- Tipo incorrecto en 'CÓDIGO SIET DEL PROGRAMA A OFERTAR (SOLO APLICA PARA PROGRAMAS ANTIGUOS)': se esperaba 'Int64', se encontró 'float64'
+- Tipo incorrecto en 'NOMBRE PROGRAMA SEGÚN REGISTRO SECRETARÍA DE EDUCACIÓN': se esperaba 'str', se encontró 'object'
+- Tipo incorrecto en 'NOMBRE DE LA INSTITUCÓN (INFORMACIÓN OBTENIDA DE SIET)': se esperaba 'str', se encontró 'object'
+- Tipo incorrecto en 'DIRECCIÓN DE LA SEDE DONDE SE IMPARTIRÁ EL PROGRAMA': se esperaba 'str', se encontró 'object'
+- Tipo incorrecto en 'Ocupación': se esperaba 'str', se encontró 'object'
+- Tipo incorrecto en 'Ruta habilitada': se esperaba 'str', se encontró 'object'
+
+--- LOG DE VALIDACIÓN (2025-08-27 09:45:25.781330): ---
+- Columnas con espacios al inicio o final: ['CÓDIGO DE INSTITUCIÓN ', 'TELÉFONO IES/IETDH ', 'ESPECIFIQUE LOS COSTOS DE ADMISIÓN ', 'NÚMERO DE CUPOS MÁXIMO PERMITIDO POR EL ACTO ADMINISTRATIVO DE RECONOCIMIENTO DEL PROGRAMA O EL DOCUMENTO QUE SOPORTE EL CUPO MÁXIMO APROBADO POR LA SECRETARIA  ']
+- Columnas con valores nulos: ['CÓDIGO SIET DEL PROGRAMA A OFERTAR (SOLO APLICA PARA PROGRAMAS ANTIGUOS)']
+- Tipo incorrecto en 'CÓDIGO SIET DEL PROGRAMA A OFERTAR (SOLO APLICA PARA PROGRAMAS ANTIGUOS)': se esperaba 'Int64', se encontró 'float64'
+- Tipo incorrecto en 'NOMBRE PROGRAMA SEGÚN REGISTRO SECRETARÍA DE EDUCACIÓN': se esperaba 'str', se encontró 'object'
+- Tipo incorrecto en 'NOMBRE DE LA INSTITUCÓN (INFORMACIÓN OBTENIDA DE SIET)': se esperaba 'str', se encontró 'object'
+- Tipo incorrecto en 'DIRECCIÓN DE LA SEDE DONDE SE IMPARTIRÁ EL PROGRAMA': se esperaba 'str', se encontró 'object'
+- Tipo incorrecto en 'Ocupación': se esperaba 'str', se encontró 'object'
+- Tipo incorrecto en 'Ruta habilitada': se esperaba 'str', se encontró 'object'
+
+--- LOG DE VALIDACIÓN (2025-08-27 09:48:36.464349): ---
+- Columnas con espacios al inicio o final: ['CÓDIGO DE INSTITUCIÓN ', 'TELÉFONO IES/IETDH ', 'ESPECIFIQUE LOS COSTOS DE ADMISIÓN ', 'NÚMERO DE CUPOS MÁXIMO PERMITIDO POR EL ACTO ADMINISTRATIVO DE RECONOCIMIENTO DEL PROGRAMA O EL DOCUMENTO QUE SOPORTE EL CUPO MÁXIMO APROBADO POR LA SECRETARIA  ']
+- Columnas con valores nulos: ['CÓDIGO SIET DEL PROGRAMA A OFERTAR (SOLO APLICA PARA PROGRAMAS ANTIGUOS)']
+- Tipo incorrecto en 'CÓDIGO SIET DEL PROGRAMA A OFERTAR (SOLO APLICA PARA PROGRAMAS ANTIGUOS)': se esperaba 'Int64', se encontró 'float64'
+- Tipo incorrecto en 'NOMBRE PROGRAMA SEGÚN REGISTRO SECRETARÍA DE EDUCACIÓN': se esperaba 'str', se encontró 'object'
+- Tipo incorrecto en 'NOMBRE DE LA INSTITUCÓN (INFORMACIÓN OBTENIDA DE SIET)': se esperaba 'str', se encontró 'object'
+- Tipo incorrecto en 'DIRECCIÓN DE LA SEDE DONDE SE IMPARTIRÁ EL PROGRAMA': se esperaba 'str', se encontró 'object'
+- Tipo incorrecto en 'Ocupación': se esperaba 'str', se encontró 'object'
+- Tipo incorrecto en 'Ruta habilitada': se esperaba 'str', se encontró 'object'
+
+--- LOG DE VALIDACIÓN (2025-08-27 10:17:05.887587): ---
+- Columnas con espacios al inicio o final: ['CÓDIGO DE INSTITUCIÓN ', 'TELÉFONO IES/IETDH ', 'ESPECIFIQUE LOS COSTOS DE ADMISIÓN ', 'NÚMERO DE CUPOS MÁXIMO PERMITIDO POR EL ACTO ADMINISTRATIVO DE RECONOCIMIENTO DEL PROGRAMA O EL DOCUMENTO QUE SOPORTE EL CUPO MÁXIMO APROBADO POR LA SECRETARIA  ']
+- Columnas con valores nulos: ['CÓDIGO SIET DEL PROGRAMA A OFERTAR (SOLO APLICA PARA PROGRAMAS ANTIGUOS)']
+- Tipo incorrecto en 'CÓDIGO SIET DEL PROGRAMA A OFERTAR (SOLO APLICA PARA PROGRAMAS ANTIGUOS)': se esperaba 'Int64', se encontró 'float64'
+- Tipo incorrecto en 'NOMBRE PROGRAMA SEGÚN REGISTRO SECRETARÍA DE EDUCACIÓN': se esperaba 'str', se encontró 'object'
+- Tipo incorrecto en 'NOMBRE DE LA INSTITUCÓN (INFORMACIÓN OBTENIDA DE SIET)': se esperaba 'str', se encontró 'object'
+- Tipo incorrecto en 'DIRECCIÓN DE LA SEDE DONDE SE IMPARTIRÁ EL PROGRAMA': se esperaba 'str', se encontró 'object'
+- Tipo incorrecto en 'Ocupación': se esperaba 'str', se encontró 'object'
+- Tipo incorrecto en 'Ruta habilitada': se esperaba 'str', se encontró 'object'
+
+--- LOG DE VALIDACIÓN (2025-08-27 10:22:13.893686): ---
+- Columnas con espacios al inicio o final: ['CÓDIGO DE INSTITUCIÓN ', 'TELÉFONO IES/IETDH ', 'ESPECIFIQUE LOS COSTOS DE ADMISIÓN ', 'NÚMERO DE CUPOS MÁXIMO PERMITIDO POR EL ACTO ADMINISTRATIVO DE RECONOCIMIENTO DEL PROGRAMA O EL DOCUMENTO QUE SOPORTE EL CUPO MÁXIMO APROBADO POR LA SECRETARIA  ']
+- Columnas con valores nulos: ['CÓDIGO SIET DEL PROGRAMA A OFERTAR (SOLO APLICA PARA PROGRAMAS ANTIGUOS)']
+- Tipo incorrecto en 'CÓDIGO SIET DEL PROGRAMA A OFERTAR (SOLO APLICA PARA PROGRAMAS ANTIGUOS)': se esperaba 'Int64', se encontró 'float64'
+- Tipo incorrecto en 'NOMBRE PROGRAMA SEGÚN REGISTRO SECRETARÍA DE EDUCACIÓN': se esperaba 'str', se encontró 'object'
+- Tipo incorrecto en 'NOMBRE DE LA INSTITUCÓN (INFORMACIÓN OBTENIDA DE SIET)': se esperaba 'str', se encontró 'object'
+- Tipo incorrecto en 'DIRECCIÓN DE LA SEDE DONDE SE IMPARTIRÁ EL PROGRAMA': se esperaba 'str', se encontró 'object'
+- Tipo incorrecto en 'Ocupación': se esperaba 'str', se encontró 'object'
+- Tipo incorrecto en 'Ruta habilitada': se esperaba 'str', se encontró 'object'
+
+--- LOG DE VALIDACIÓN (2025-08-27 10:39:02.049398): ---
+- Columnas con espacios al inicio o final: ['CÓDIGO DE INSTITUCIÓN ', 'TELÉFONO IES/IETDH ', 'ESPECIFIQUE LOS COSTOS DE ADMISIÓN ', 'NÚMERO DE CUPOS MÁXIMO PERMITIDO POR EL ACTO ADMINISTRATIVO DE RECONOCIMIENTO DEL PROGRAMA O EL DOCUMENTO QUE SOPORTE EL CUPO MÁXIMO APROBADO POR LA SECRETARIA  ']
+- Columnas con valores nulos: ['CÓDIGO SIET DEL PROGRAMA A OFERTAR (SOLO APLICA PARA PROGRAMAS ANTIGUOS)']
+- Tipo incorrecto en 'CÓDIGO SIET DEL PROGRAMA A OFERTAR (SOLO APLICA PARA PROGRAMAS ANTIGUOS)': se esperaba 'Int64', se encontró 'float64'
+- Tipo incorrecto en 'NOMBRE PROGRAMA SEGÚN REGISTRO SECRETARÍA DE EDUCACIÓN': se esperaba 'str', se encontró 'object'
+- Tipo incorrecto en 'NOMBRE DE LA INSTITUCÓN (INFORMACIÓN OBTENIDA DE SIET)': se esperaba 'str', se encontró 'object'
+- Tipo incorrecto en 'DIRECCIÓN DE LA SEDE DONDE SE IMPARTIRÁ EL PROGRAMA': se esperaba 'str', se encontró 'object'
+- Tipo incorrecto en 'Ocupación': se esperaba 'str', se encontró 'object'
+- Tipo incorrecto en 'Ruta habilitada': se esperaba 'str', se encontró 'object'
+
+--- LOG DE VALIDACIÓN (2025-08-27 11:03:37.546804): ---
+- Columnas con espacios al inicio o final: ['CÓDIGO DE INSTITUCIÓN ', 'TELÉFONO IES/IETDH ', 'ESPECIFIQUE LOS COSTOS DE ADMISIÓN ', 'NÚMERO DE CUPOS MÁXIMO PERMITIDO POR EL ACTO ADMINISTRATIVO DE RECONOCIMIENTO DEL PROGRAMA O EL DOCUMENTO QUE SOPORTE EL CUPO MÁXIMO APROBADO POR LA SECRETARIA  ']
+- Columnas con valores nulos: ['CÓDIGO SIET DEL PROGRAMA A OFERTAR (SOLO APLICA PARA PROGRAMAS ANTIGUOS)']
+- Tipo incorrecto en 'CÓDIGO SIET DEL PROGRAMA A OFERTAR (SOLO APLICA PARA PROGRAMAS ANTIGUOS)': se esperaba 'Int64', se encontró 'float64'
+- Tipo incorrecto en 'NOMBRE PROGRAMA SEGÚN REGISTRO SECRETARÍA DE EDUCACIÓN': se esperaba 'str', se encontró 'object'
+- Tipo incorrecto en 'NOMBRE DE LA INSTITUCÓN (INFORMACIÓN OBTENIDA DE SIET)': se esperaba 'str', se encontró 'object'
+- Tipo incorrecto en 'DIRECCIÓN DE LA SEDE DONDE SE IMPARTIRÁ EL PROGRAMA': se esperaba 'str', se encontró 'object'
+- Tipo incorrecto en 'Ocupación': se esperaba 'str', se encontró 'object'
+- Tipo incorrecto en 'Ruta habilitada': se esperaba 'str', se encontró 'object'
+
+--- LOG DE VALIDACIÓN (2025-08-27 11:17:07.888312): ---
+- Columnas con espacios al inicio o final: ['CÓDIGO DE INSTITUCIÓN ', 'TELÉFONO IES/IETDH ', 'ESPECIFIQUE LOS COSTOS DE ADMISIÓN ', 'NÚMERO DE CUPOS MÁXIMO PERMITIDO POR EL ACTO ADMINISTRATIVO DE RECONOCIMIENTO DEL PROGRAMA O EL DOCUMENTO QUE SOPORTE EL CUPO MÁXIMO APROBADO POR LA SECRETARIA  ']
+- Columnas con valores nulos: ['CÓDIGO SIET DEL PROGRAMA A OFERTAR (SOLO APLICA PARA PROGRAMAS ANTIGUOS)']
+- Tipo incorrecto en 'CÓDIGO SIET DEL PROGRAMA A OFERTAR (SOLO APLICA PARA PROGRAMAS ANTIGUOS)': se esperaba 'Int64', se encontró 'float64'
+- Tipo incorrecto en 'NOMBRE PROGRAMA SEGÚN REGISTRO SECRETARÍA DE EDUCACIÓN': se esperaba 'str', se encontró 'object'
+- Tipo incorrecto en 'NOMBRE DE LA INSTITUCÓN (INFORMACIÓN OBTENIDA DE SIET)': se esperaba 'str', se encontró 'object'
+- Tipo incorrecto en 'DIRECCIÓN DE LA SEDE DONDE SE IMPARTIRÁ EL PROGRAMA': se esperaba 'str', se encontró 'object'
+- Tipo incorrecto en 'Ocupación': se esperaba 'str', se encontró 'object'
+- Tipo incorrecto en 'Ruta habilitada': se esperaba 'str', se encontró 'object'
+
+--- LOG DE VALIDACIÓN (2025-08-27 11:56:03.690420): ---
+- Columnas con espacios al inicio o final: ['CÓDIGO DE INSTITUCIÓN ', 'TELÉFONO IES/IETDH ', 'ESPECIFIQUE LOS COSTOS DE ADMISIÓN ', 'NÚMERO DE CUPOS MÁXIMO PERMITIDO POR EL ACTO ADMINISTRATIVO DE RECONOCIMIENTO DEL PROGRAMA O EL DOCUMENTO QUE SOPORTE EL CUPO MÁXIMO APROBADO POR LA SECRETARIA  ']
+- Columnas con valores nulos: ['CÓDIGO SIET DEL PROGRAMA A OFERTAR (SOLO APLICA PARA PROGRAMAS ANTIGUOS)']
+- Tipo incorrecto en 'CÓDIGO SIET DEL PROGRAMA A OFERTAR (SOLO APLICA PARA PROGRAMAS ANTIGUOS)': se esperaba 'Int64', se encontró 'float64'
+- Tipo incorrecto en 'NOMBRE PROGRAMA SEGÚN REGISTRO SECRETARÍA DE EDUCACIÓN': se esperaba 'str', se encontró 'object'
+- Tipo incorrecto en 'NOMBRE DE LA INSTITUCÓN (INFORMACIÓN OBTENIDA DE SIET)': se esperaba 'str', se encontró 'object'
+- Tipo incorrecto en 'DIRECCIÓN DE LA SEDE DONDE SE IMPARTIRÁ EL PROGRAMA': se esperaba 'str', se encontró 'object'
+- Tipo incorrecto en 'Ocupación': se esperaba 'str', se encontró 'object'
+- Tipo incorrecto en 'Ruta habilitada': se esperaba 'str', se encontró 'object'
