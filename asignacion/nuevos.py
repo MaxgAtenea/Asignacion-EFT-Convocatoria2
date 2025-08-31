@@ -20,7 +20,7 @@ class AsignacionNuevos(AsignacionNuevosAntiguos):
             super().__init__(data, "nuevos")
 
         self.data = data
-        self.data[['cod_CNO', 'ipo']] = self.data.apply(self._reemplazar_codCNO_ipo, axis=1)
+        #self.data[['cod_CNO', 'ipo']] = self.data.apply(self._reemplazar_codCNO_ipo, axis=1)
         self.asignacion_por_ocupacion = pd.DataFrame()
         self.primera_asignacion = pd.DataFrame()
         
@@ -54,19 +54,28 @@ class AsignacionNuevos(AsignacionNuevosAntiguos):
             for i in indices:
                 costo_unitario = data.loc[i, 'valor_programa']
                 cupos_disp = data.loc[i, 'numero_cupos_ofertar']
+                cupos_minimos_disp = data.loc[i, 'numero_minimo_cupos']
+                
+                ## TODO: Esta condicion deberia verificarse desde la fuente
                 if pd.isna(costo_unitario) or costo_unitario == 0:
                     continue
         
                 recurso_necesario = cupos_disp * costo_unitario
+                recurso_necesario_minimo = cupos_minimos_disp*costo_unitario
         
                 if saldo >= recurso_necesario:
+                    #El saldo es suficiente para financiar todos los cupos
                     data.loc[i, 'cupos_asignados'] = cupos_disp
                     saldo -= recurso_necesario
+                elif saldo >= recurso_necesario_minimo:
+                    # El saldo es suficiente para financiar el mínimo de cupos 
+                    data.loc[i, 'cupos_asignados'] = cupos_minimos_disp
+                    saldo -= recurso_necesario_minimo
                 else:
-                    cupos_asignables = saldo // costo_unitario
-                    data.loc[i, 'cupos_asignados'] = cupos_asignables
-                    saldo -= cupos_asignables * costo_unitario
-                    break
+                    #El saldo no es suficiente: continuar con el siguiente programa priorizado
+                    data.loc[i, 'cupos_asignados'] = 0
+                    continue
+    
         
         # Paso 5: Calcular recursos asignados
         data['recurso_asignado'] = data['cupos_asignados'] * data['valor_programa']

@@ -52,3 +52,66 @@
 - Tipo incorrecto en 'Nombre Institucion': se esperaba 'str', se encontró 'object'
 - Tipo incorrecto en 'Ocupacion': se esperaba 'str', se encontró 'object'
 - Tipo incorrecto en 'RUTA HABILITADA': se esperaba 'str', se encontró 'object'
+
+--- LOG DE VALIDACIÓN (2025-08-31 13:03:00.471317): ---
+- Columnas con espacios al inicio o final: ['VALOR SEMESTRE ']
+- Tipo incorrecto en 'NOMBRE DEL PROGRAMA': se esperaba 'str', se encontró 'object'
+- Tipo incorrecto en 'Nombre Institucion': se esperaba 'str', se encontró 'object'
+- Tipo incorrecto en 'Ocupacion': se esperaba 'str', se encontró 'object'
+- Tipo incorrecto en 'RUTA HABILITADA': se esperaba 'str', se encontró 'object'
+
+--- LOG DE VALIDACIÓN (2025-08-31 13:10:03.629103): ---
+- Columnas con espacios al inicio o final: ['VALOR SEMESTRE ']
+- Tipo incorrecto en 'NOMBRE DEL PROGRAMA': se esperaba 'str', se encontró 'object'
+- Tipo incorrecto en 'Nombre Institucion': se esperaba 'str', se encontró 'object'
+- Tipo incorrecto en 'Ocupacion': se esperaba 'str', se encontró 'object'
+- Tipo incorrecto en 'RUTA HABILITADA': se esperaba 'str', se encontró 'object'
+
+--- LOG DE VALIDACIÓN (2025-08-31 13:25:48.671870): ---
+- Columnas con espacios al inicio o final: ['VALOR SEMESTRE ']
+- Tipo incorrecto en 'NOMBRE DEL PROGRAMA': se esperaba 'str', se encontró 'object'
+- Tipo incorrecto en 'Nombre Institucion': se esperaba 'str', se encontró 'object'
+- Tipo incorrecto en 'Ocupacion': se esperaba 'str', se encontró 'object'
+- Tipo incorrecto en 'RUTA HABILITADA': se esperaba 'str', se encontró 'object'
+
+--- LOG DE VALIDACIÓN (2025-08-31 13:26:46.302074): ---
+- Columnas con espacios al inicio o final: ['VALOR SEMESTRE ']
+- Tipo incorrecto en 'NOMBRE DEL PROGRAMA': se esperaba 'str', se encontró 'object'
+- Tipo incorrecto en 'Nombre Institucion': se esperaba 'str', se encontró 'object'
+- Tipo incorrecto en 'Ocupacion': se esperaba 'str', se encontró 'object'
+- Tipo incorrecto en 'RUTA HABILITADA': se esperaba 'str', se encontró 'object'
+
+--- LOG DE VALIDACIÓN (2025-08-31 13:27:23.833649): ---
+- Columnas con espacios al inicio o final: ['VALOR SEMESTRE ']
+- Tipo incorrecto en 'NOMBRE DEL PROGRAMA': se esperaba 'str', se encontró 'object'
+- Tipo incorrecto en 'Nombre Institucion': se esperaba 'str', se encontró 'object'
+- Tipo incorrecto en 'Ocupacion': se esperaba 'str', se encontró 'object'
+- Tipo incorrecto en 'RUTA HABILITADA': se esperaba 'str', se encontró 'object'
+
+--- LOG DE VALIDACIÓN (2025-08-31 13:28:13.182307): ---
+- Columnas con espacios al inicio o final: ['VALOR SEMESTRE ']
+- Tipo incorrecto en 'NOMBRE DEL PROGRAMA': se esperaba 'str', se encontró 'object'
+- Tipo incorrecto en 'Nombre Institucion': se esperaba 'str', se encontró 'object'
+- Tipo incorrecto en 'Ocupacion': se esperaba 'str', se encontró 'object'
+- Tipo incorrecto en 'RUTA HABILITADA': se esperaba 'str', se encontró 'object'
+
+--- LOG DE VALIDACIÓN (2025-08-31 13:28:51.946212): ---
+- Columnas con espacios al inicio o final: ['VALOR SEMESTRE ']
+- Tipo incorrecto en 'NOMBRE DEL PROGRAMA': se esperaba 'str', se encontró 'object'
+- Tipo incorrecto en 'Nombre Institucion': se esperaba 'str', se encontró 'object'
+- Tipo incorrecto en 'Ocupacion': se esperaba 'str', se encontró 'object'
+- Tipo incorrecto en 'RUTA HABILITADA': se esperaba 'str', se encontró 'object'
+
+--- LOG DE VALIDACIÓN (2025-08-31 13:29:29.315336): ---
+- Columnas con espacios al inicio o final: ['VALOR SEMESTRE ']
+- Tipo incorrecto en 'NOMBRE DEL PROGRAMA': se esperaba 'str', se encontró 'object'
+- Tipo incorrecto en 'Nombre Institucion': se esperaba 'str', se encontró 'object'
+- Tipo incorrecto en 'Ocupacion': se esperaba 'str', se encontró 'object'
+- Tipo incorrecto en 'RUTA HABILITADA': se esperaba 'str', se encontró 'object'
+
+--- LOG DE VALIDACIÓN (2025-08-31 13:32:03.157265): ---
+- Columnas con espacios al inicio o final: ['VALOR SEMESTRE ']
+- Tipo incorrecto en 'NOMBRE DEL PROGRAMA': se esperaba 'str', se encontró 'object'
+- Tipo incorrecto en 'Nombre Institucion': se esperaba 'str', se encontró 'object'
+- Tipo incorrecto en 'Ocupacion': se esperaba 'str', se encontró 'object'
+- Tipo incorrecto en 'RUTA HABILITADA': se esperaba 'str', se encontró 'object'

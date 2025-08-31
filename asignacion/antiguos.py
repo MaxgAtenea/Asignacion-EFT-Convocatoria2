@@ -108,22 +108,27 @@ class AsignacionAntiguos(AsignacionNuevosAntiguos):
             for i in indices:
                 costo_unitario = data.loc[i, 'valor_programa']
                 cupos_disp = data.loc[i, 'numero_cupos_ofertar']
+                cupos_minimos_disp = data.loc[i, 'numero_minimo_cupos']
 
                 ## TODO: Esta condicion deberia verificarse desde la fuente
                 if pd.isna(costo_unitario) or costo_unitario == 0:
                     continue
     
-                recurso_necesario = cupos_disp * costo_unitario
+                recurso_necesario = cupos_disp*costo_unitario
+                recurso_necesario_minimo = cupos_minimos_disp*costo_unitario
     
                 if saldo >= recurso_necesario:
+                    #El saldo es suficiente para financiar todos los cupos
                     data.loc[i, 'cupos_asignados'] = cupos_disp
                     saldo -= recurso_necesario
+                elif saldo >= recurso_necesario_minimo:
+                    # El saldo es suficiente para financiar el mínimo de cupos 
+                    data.loc[i, 'cupos_asignados'] = cupos_minimos_disp
+                    saldo -= recurso_necesario_minimo
                 else:
-                    # Ver si se puede financiar al menos un cupo
-                    cupos_asignables = saldo // costo_unitario
-                    data.loc[i, 'cupos_asignados'] = cupos_asignables
-                    saldo -= cupos_asignables * costo_unitario
-                    break
+                    #El saldo no es suficiente: continuar con el siguiente programa priorizado
+                    data.loc[i, 'cupos_asignados'] = 0
+                    continue
     
         # Paso 3: Calcular recursos efectivamente asignados por programa y cupos restantes por asignar
         data['recurso_asignado'] = data['cupos_asignados'] * data['valor_programa']

@@ -3,7 +3,6 @@ from . import constants
 from .base import AsignacionBase
 
 from .constants import RECURSOS_POR_RUTA
-from .constants import COLUMNA_CUPOS_MAXIMOS
 
 class AsignacionCerrados(AsignacionBase):
     """
@@ -26,7 +25,7 @@ class AsignacionCerrados(AsignacionBase):
         
         #Garantiza que al instanciar la clase, se calcule la asignacion
         self.asignar_recursos()
-        #Identificar los programas con cupos disponibles después de la asignacion
+        #Identificar los programas con cupos_disp disponibles después de la asignacion
         self._identificar_programas_disponibles()
 
         
@@ -37,7 +36,7 @@ class AsignacionCerrados(AsignacionBase):
         Asigna recursos a programas de grupos cerrados hasta agotar el saldo total disponible.
     
         Retorna:
-            pd.DataFrame: DataFrame con columnas de cupos y recursos asignados, y el saldo restante.
+            pd.DataFrame: DataFrame con columnas de cupos_disp y recursos asignados, y el saldo restante.
         """
         data = self.data.copy()
         
@@ -49,28 +48,33 @@ class AsignacionCerrados(AsignacionBase):
         saldo_total = self.recursos_iniciales
     
         for idx, row in data.iterrows():
-            costo = row['valor_programa']
-            cupos = min(row['numero_cupos_ofertar'], row[COLUMNA_CUPOS_MAXIMOS])
+            costo_unitario = row['valor_programa']
+            cupos_disp = row['numero_cupos_ofertar']
+            cupos_minimos_disp = row['numero_minimo_cupos']
 
             #TO DO: esta condicion debería ser parte del contrato de la clase AsignacionBase()
-            if pd.isna(costo) or costo <= 0 or pd.isna(cupos) or cupos <= 0:
+            if pd.isna(costo_unitario) or costo_unitario <= 0 or pd.isna(cupos_disp) or cupos_disp <= 0:
                 data.at[idx, 'saldo_total_remanente'] = saldo_total
                 continue
     
-            recurso_necesario = costo * cupos
+            recurso_necesario = costo_unitario * cupos_disp
+            recurso_necesario_minimo = cupos_minimos_disp * costo_unitario
     
             if saldo_total >= recurso_necesario:
-                data.at[idx, 'cupos_asignados'] = cupos
+                #El saldo es suficiente para financiar todos los cupos
+                data.at[idx, 'cupos_asignados'] = cupos_disp
                 data.at[idx, 'recurso_asignado'] = recurso_necesario
                 saldo_total -= recurso_necesario
+                
+            elif saldo_total>=recurso_necesario_minimo:
+                # El saldo es suficiente para financiar el mínimo de cupos 
+                data.at[idx, 'cupos_asignados'] = cupos_minimos_disp
+                data.at[idx, 'recurso_asignado'] = recurso_necesario_minimo
+                saldo_total -= recurso_necesario_minimo                
             else:
-                
-                cupos_posibles = saldo_total // costo
-                recurso_asignado = cupos_posibles * costo
-                
-                data.at[idx, 'cupos_asignados'] = cupos_posibles
-                data.at[idx, 'recurso_asignado'] = recurso_asignado
-                saldo_total -= recurso_asignado
+                #El saldo no es suficiente: continuar con el siguiente programa priorizado      
+                data.at[idx, 'cupos_asignados'] = 0
+                data.at[idx, 'recurso_asignado'] = 0
     
             data.at[idx, 'saldo_total_remanente'] = saldo_total
     
@@ -95,9 +99,9 @@ class AsignacionCerrados(AsignacionBase):
         Criterios de orden:
         1. (Opcional) cod_CNO
         2. Mayor puntaje
-        3. Mayor número de cupos ofertados
+        3. Mayor número de cupos_disp ofertados
         4. Mayor meta de vinculación
-        5. Menor costo
+        5. Menor costo_unitario
         6. Menor duración
     .
     
@@ -127,7 +131,7 @@ class AsignacionCerrados(AsignacionBase):
 
     def _identificar_programas_disponibles(self):
         """
-        Identifica cuales programas después del la asignación quedaron con cupos disponibles.
+        Identifica cuales programas después del la asignación quedaron con cupos_disp disponibles.
         """        
         data = self.primera_asignacion.copy()
         
