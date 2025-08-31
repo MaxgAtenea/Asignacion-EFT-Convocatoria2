@@ -43,7 +43,7 @@ class AsignacionBase:
         self.path_load = "../input/"
         self.path_export = "output/"
         self._subdirectorio_resultados = "results/"
-        self._columnas_relevantes = COLUMNAS_EXTERNO + COLUMNAS_COMPLEMENTO
+        self._columnas_relevantes = COLUMNAS_EXTERNO #+ COLUMNAS_COMPLEMENTO
         self._errores_validacion = []
     
     # TO DO: En el contrato de la función está pendiente especificar las condiciones que se esperan de ruta_archivo_externo (archvio que viene de otra area)

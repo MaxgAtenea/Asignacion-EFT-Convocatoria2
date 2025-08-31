@@ -3,7 +3,6 @@ from . import constants
 
 from .nuevosyantiguos import AsignacionNuevosAntiguos
 
-from .constants import COLUMNA_VALOR_PROGRAMA
 from .constants import RECURSOS_POR_RUTA
 from .constants import PROGRAMA_INFO
 
@@ -53,7 +52,7 @@ class AsignacionNuevos(AsignacionNuevosAntiguos):
             indices = grupo.index
         
             for i in indices:
-                costo_unitario = data.loc[i, COLUMNA_VALOR_PROGRAMA]
+                costo_unitario = data.loc[i, 'valor_programa']
                 cupos_disp = data.loc[i, 'numero_cupos_ofertar']
                 if pd.isna(costo_unitario) or costo_unitario == 0:
                     continue
@@ -70,7 +69,7 @@ class AsignacionNuevos(AsignacionNuevosAntiguos):
                     break
         
         # Paso 5: Calcular recursos asignados
-        data['recurso_asignado'] = data['cupos_asignados'] * data[COLUMNA_VALOR_PROGRAMA]
+        data['recurso_asignado'] = data['cupos_asignados'] * data['valor_programa']
         data['cupos_sobrantes'] = data['numero_cupos_ofertar'] - data['cupos_asignados']
         
         # Paso 6: Agrupar para obtener resumen de asignaciones por ocupacion
@@ -132,10 +131,10 @@ class AsignacionNuevos(AsignacionNuevosAntiguos):
             orden.append(True)
     
         columnas += [
-            'Puntaje (nuevos y cerrados)',
+            'puntaje',
             'numero_cupos_ofertar',
-            'Meta de vinculación',
-            COLUMNA_VALOR_PROGRAMA,
+            'meta_vinculacion',
+            'valor_programa',
             'duracion_horas_programa'
         ]
     

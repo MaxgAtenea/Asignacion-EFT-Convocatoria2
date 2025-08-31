@@ -2,7 +2,6 @@ import pandas as pd
 from . import constants
 from .base import AsignacionBase
 
-from .constants import COLUMNA_VALOR_PROGRAMA
 from .constants import RECURSOS_POR_RUTA
 from .constants import COLUMNA_CUPOS_MAXIMOS
 
@@ -50,7 +49,7 @@ class AsignacionCerrados(AsignacionBase):
         saldo_total = self.recursos_iniciales
     
         for idx, row in data.iterrows():
-            costo = row[COLUMNA_VALOR_PROGRAMA]
+            costo = row['valor_programa']
             cupos = min(row['numero_cupos_ofertar'], row[COLUMNA_CUPOS_MAXIMOS])
 
             #TO DO: esta condicion debería ser parte del contrato de la clase AsignacionBase()
@@ -79,7 +78,7 @@ class AsignacionCerrados(AsignacionBase):
                 break
                 
         # Paso 5: Calcular recursos asignados
-        data['recurso_asignado'] = data['cupos_asignados'] * data[COLUMNA_VALOR_PROGRAMA]
+        data['recurso_asignado'] = data['cupos_asignados'] * data['valor_programa']
         data['cupos_sobrantes'] = data['numero_cupos_ofertar'] - data['cupos_asignados']
         
         self.recursos_disponibles = saldo_total 
@@ -115,10 +114,10 @@ class AsignacionCerrados(AsignacionBase):
             orden.append(True)
     
         columnas += [
-            'Puntaje (nuevos y cerrados)',
+            'puntaje',
             'numero_cupos_ofertar',
-            'Meta de vinculación',
-            COLUMNA_VALOR_PROGRAMA,
+            'meta_vinculacion',
+            'valor_programa',
             'duracion_horas_programa'
         ]
     

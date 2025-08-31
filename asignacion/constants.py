@@ -12,27 +12,30 @@ RECURSOS_POR_RUTA = {
     "cerrados": BOLSA_COMUN*PORCENTAJES_RUTA['cerrados']
 }
 
-# Columna que especifica el valor del programa indexado
-COLUMNA_VALOR_PROGRAMA = "valor_programa_indexado"
+# Columna que especifica el valor del programa
+COLUMNA_VALOR_PROGRAMA = "VALOR PROGRAMA PROYECTADO"
 # Columna que especifica el numero de cupos maximos aprobados 
 COLUMNA_CUPOS_MAXIMOS = "numero_maximo_cupos"
+COLUMNA_CUPOS_MINIMOS = "numero_minimo_cupos"
 
 MINIMO_CUPOS_CERRADOS_SEDE = 50
 
 NOMBRE_COLUMNAS_MAPPING_EXTERNO = {
-    "CÓDIGO DE INSTITUCIÓN ": 'codigo_institucion',
-    "CÓDIGO SIET DEL PROGRAMA A OFERTAR (SOLO APLICA PARA PROGRAMAS ANTIGUOS)": 'codigo_programa',
-    "NOMBRE PROGRAMA SEGÚN REGISTRO SECRETARÍA DE EDUCACIÓN" : 'nombre_programa',
-    "NOMBRE DE LA INSTITUCÓN (INFORMACIÓN OBTENIDA DE SIET)" : "nombre_institucion",
-    "NÚMERO DE CUPOS A OFERTAR": "numero_cupos_ofertar",
-    "DURACIÓN DEL PROGRAMA EN NÚMERO DE HORAS (según aplique):" : "duracion_horas_programa",
-    "DIRECCIÓN DE LA SEDE DONDE SE IMPARTIRÁ EL PROGRAMA" : "direccion_sede",
-    "ISOEFT" : "isoeft",
-    "Ocupación": "ocupacion",
-    "IPO": "ipo",
-    "Ruta habilitada": "ruta_habilitada",
-    "VALOR TOTAL DEL PROGRAMA INDEXADO": "valor_programa_indexado",
-    "Número máximo de cupos por grupos": "numero_maximo_cupos"
+    "CODIGO DEL PROGRAMA": 'codigo_programa', #done
+    "NOMBRE DEL PROGRAMA" : 'nombre_programa', #done
+    "Nombre Institucion" : "nombre_institucion", #done
+    "NÚMERO DE CUPOS A OFERTAR": "numero_cupos_ofertar", #done
+    "DURACION PROGRAMA HORAS" : "duracion_horas_programa", #done
+    "ISOEFT" : "isoeft", #done
+    "Ocupacion": "ocupacion", #done
+    "IPO": "ipo", #done
+    "RUTA HABILITADA": "ruta_habilitada", #done
+    COLUMNA_VALOR_PROGRAMA: "valor_programa",
+    "NÚMERO MÍNIMO DE CUPOS": "numero_minimo_cupos", #done
+    "CODIGO DE LA OCUPACION": "cod_CNO", #done
+    "PUNTAJE NUEVOS Y CERRADOS": "puntaje", #done
+    "META DE VINCULACION": "meta_vinculacion", #done
+    "NÚMERO MÍNIMO DE CUPOS": "numero_minimo_cupos"
 }
 
 NOMBRE_COLUMNAS_MAPPING_COMPLEMENTO = {
@@ -43,19 +46,21 @@ NOMBRE_COLUMNAS_MAPPING_COMPLEMENTO = {
 
 
 TIPO_COLUMNAS_MAPPING_EXTERNO = {
-    "codigo_institucion": "Int64",
-    "codigo_programa" : 'Int64', # la llave para unir Programas_EFT y Programas_EFT_Oferta
-    "nombre_programa" : "str",
-    "nombre_institucion" : "str",
-    "numero_cupos_ofertar" : "Int64" , 
-    "duracion_horas_programa": "Int64",
-    "direccion_sede": "str",
-    "isoeft" : "float",
-    "ocupacion": "str",
-    "ipo": "float",
-    "ruta_habilitada" : "str",
-    "valor_programa_indexado" : "float",
-    "numero_maximo_cupos": "Int64"
+    "codigo_programa" : 'Int64', #done
+    "nombre_programa" : "str", #done
+    "nombre_institucion" : "str", #done
+    "numero_cupos_ofertar" : "Int64" , #done
+    "cod_CNO": "Int64", #done
+    "duracion_horas_programa": "Int64", #done
+    "isoeft" : "float", #done
+    "ocupacion": "str", #done 
+    "ipo": "float", #done 
+    "puntaje": "float", #done
+    "meta_vinculacion": "float", #done
+    "ruta_habilitada" : "str", #done 
+    "valor_programa": "float", #done
+    "valor_programa" : "float",
+    "numero_minimo_cupos": "Int64" #done
 }
 
 TIPO_COLUMNAS_MAPPING_COMPLEMENTO = {
@@ -84,16 +89,18 @@ COLUMNAS_COMPLEMENTO = [
 COLUMNAS_EXTERNO = [
     'ruta_habilitada',
     'nombre_institucion',
-    'ocupacion',
     'nombre_programa',
     'codigo_programa',
+    'cod_CNO',
+    'ocupacion',
     'ipo',
-    'Puntaje (nuevos y cerrados)',
-    'Meta de vinculación',
-    COLUMNA_VALOR_PROGRAMA,
+    'isoeft',
+    'puntaje',
+    'meta_vinculacion',
     "numero_cupos_ofertar",
     'duracion_horas_programa',
-    COLUMNA_CUPOS_MAXIMOS
+    "numero_minimo_cupos",
+    "valor_programa"
 ]
 
 #diccionario con los cno e IPO de los programas nuevos

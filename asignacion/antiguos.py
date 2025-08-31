@@ -1,8 +1,6 @@
 import pandas as pd
 from . import constants
-from .constants import COLUMNA_VALOR_PROGRAMA
 from .nuevosyantiguos import AsignacionNuevosAntiguos
-
 
 class AsignacionAntiguos(AsignacionNuevosAntiguos):
     """
@@ -25,7 +23,7 @@ class AsignacionAntiguos(AsignacionNuevosAntiguos):
         #TODO: Definir contrato
         self.data = data.copy()
         #TO DO: Este filtro es temporal, porque debería venir del contrato de la clase AsignacionBase()
-        self.data = self.data[self.data['isoeft_4d'].notna()]
+        self.data = self.data[self.data['isoeft'].notna()]
         
         #Atributos para guardar los recursos de la primera y segunda asignacion de recursos
         self.primera_asignacion = pd.DataFrame()
@@ -49,25 +47,25 @@ class AsignacionAntiguos(AsignacionNuevosAntiguos):
         """
         ## TODO: Eliminar la posibilidad de que hayan NANS. Esto se debe corregir desde la fuente
         
-        Ordena un DataFrame por ['cod_CNO', 'ocupacion', 'IPO', 'isoeft_4d'],
-        asegurando que las filas con NaN en 'isoeft_4d' queden al final del DataFrame completo.
+        Ordena un DataFrame por ['cod_CNO', 'ocupacion', 'ipo', 'isoeft'],
+        asegurando que las filas con NaN en 'isoeft' queden al final del DataFrame completo.
 
         CONTRATO:
-        1. Los programas no pueden venir con isoeft_4d igual a nan, vacío o un tipo distinto a float
+        1. Los programas no pueden venir con isoeft igual a nan, vacío o un tipo distinto a float
 
         """
 
-        # filtrar NaN en isoeft_4d: 
+        # filtrar NaN en isoeft: 
         #TO DO: esta condicion se podrá eliminar una vez se incluya la verificacion en la lectura de los datos en AsignacionBase() ->base.py
-        sin_nan = self.data[self.data['isoeft_4d'].notna()]
+        sin_nan = self.data[self.data['isoeft'].notna()]
     
         #Columnas para ordenar
         columnas = [
             'ipo', #1
             'cod_CNO', #2
             'ocupacion', #3
-            'isoeft_4d', #4
-            COLUMNA_VALOR_PROGRAMA, #5 ->Regla de desempate
+            'isoeft', #4
+            'valor_programa', #5 ->Regla de desempate
             "numero_cupos_ofertar", #6 ->Regla de desempate
             "duracion_horas_programa" #7 ->Regla de desempate
         ]
@@ -108,7 +106,7 @@ class AsignacionAntiguos(AsignacionNuevosAntiguos):
             indices = grupo.index
     
             for i in indices:
-                costo_unitario = data.loc[i, COLUMNA_VALOR_PROGRAMA]
+                costo_unitario = data.loc[i, 'valor_programa']
                 cupos_disp = data.loc[i, 'numero_cupos_ofertar']
 
                 ## TODO: Esta condicion deberia verificarse desde la fuente
@@ -128,7 +126,7 @@ class AsignacionAntiguos(AsignacionNuevosAntiguos):
                     break
     
         # Paso 3: Calcular recursos efectivamente asignados por programa y cupos restantes por asignar
-        data['recurso_asignado'] = data['cupos_asignados'] * data[COLUMNA_VALOR_PROGRAMA]
+        data['recurso_asignado'] = data['cupos_asignados'] * data['valor_programa']
         data['cupos_sobrantes'] = data['numero_cupos_ofertar'] - data['cupos_asignados']
     
         # Paso 4: Agrupar para obtener resumen de asignaciones por ocupacion
