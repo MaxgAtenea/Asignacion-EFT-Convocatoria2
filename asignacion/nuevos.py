@@ -67,10 +67,11 @@ class AsignacionNuevos(AsignacionNuevosAntiguos):
                     #El saldo es suficiente para financiar todos los cupos
                     data.loc[i, 'cupos_asignados'] = cupos_disp
                     saldo -= recurso_necesario
-                elif saldo >= recurso_necesario_minimo:
-                    # El saldo es suficiente para financiar el mínimo de cupos 
-                    data.loc[i, 'cupos_asignados'] = cupos_minimos_disp
-                    saldo -= recurso_necesario_minimo
+                elif recurso_necesario >= saldo >= recurso_necesario_minimo:
+                    # El saldo es suficiente para financiar el mínimo de cupos
+                    cupos_asignables = saldo // costo_unitario
+                    data.loc[i, 'cupos_asignados'] = cupos_asignables
+                    saldo -= cupos_asignables * costo_unitario
                 else:
                     #El saldo no es suficiente: continuar con el siguiente programa priorizado
                     data.loc[i, 'cupos_asignados'] = 0
@@ -149,7 +150,11 @@ class AsignacionNuevos(AsignacionNuevosAntiguos):
     
         orden += [False, False, False, True, True]
     
-        self.data = df.sort_values(by=columnas, ascending=orden).reset_index(drop=True)
+        self.data = (
+            df.sort_values(by=columnas, ascending=orden)
+                .reset_index(drop=True)
+                .assign(orden_priorizacion=lambda x: range(1, len(x)+1))
+        )
 
 
     def _reemplazar_codCNO_ipo(self, row):

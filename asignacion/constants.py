@@ -24,6 +24,8 @@ NOMBRE_COLUMNAS_MAPPING_EXTERNO = {
     "CODIGO DEL PROGRAMA": 'codigo_programa', #done
     "NOMBRE DEL PROGRAMA" : 'nombre_programa', #done
     "Nombre Institucion" : "nombre_institucion", #done
+    "JORNADA_PROGRAMA": "jornada_programa", #done
+    "MODALIDAD": "modalidad", #done
     "NÚMERO DE CUPOS A OFERTAR": "numero_cupos_ofertar", #done
     "DURACION PROGRAMA HORAS" : "duracion_horas_programa", #done
     "ISOEFT" : "isoeft", #done
@@ -49,6 +51,8 @@ TIPO_COLUMNAS_MAPPING_EXTERNO = {
     "codigo_programa" : 'Int64', #done
     "nombre_programa" : "str", #done
     "nombre_institucion" : "str", #done
+    "jornada_programa": "str", #done
+    "modalidad": "str", #done
     "numero_cupos_ofertar" : "Int64" , #done
     "cod_CNO": "Int64", #done
     "duracion_horas_programa": "Int64", #done
@@ -90,6 +94,8 @@ COLUMNAS_EXTERNO = [
     'ruta_habilitada',
     'nombre_institucion',
     'nombre_programa',
+    "jornada_programa",
+    "modalidad",
     'codigo_programa',
     'cod_CNO',
     'ocupacion',

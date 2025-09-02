@@ -44,9 +44,9 @@ def merge_without_duplicates(
     df2: pd.DataFrame,
     df2_columns: list,
     merge_on: list,
-    suffixes: tuple = ("_first_iteration", "_second_iteration"),
+    suffixes: tuple = ("_primera_iteracion", "_segunda_iteracion"),
     how: str = "outer",
-    indicator: bool = True
+    indicator: bool = False
 ) -> pd.DataFrame:
     """
     Merge two DataFrames after dropping duplicated columns in both.
@@ -89,6 +89,13 @@ def merge_without_duplicates(
         how=how,
         indicator=indicator
     )
+
+    merged['total_recursos_asignados'] = merged['recurso_asignado_primera_iteracion'].fillna(0) +  merged['recurso_asignado_segunda_iteracion'].fillna(0)
+    merged['total_cupos_asignados'] = merged['cupos_asignados_primera_iteracion'].fillna(0) +  merged['cupos_asignados_segunda_iteracion'].fillna(0)
+    
+    #Reorder with column list
+    cols = ['uid'] + [col for col in merged.columns if col != 'uid']
+    merged = merged[cols]
 
     return merged
 

@@ -109,6 +109,9 @@ class AsignacionNuevosAntiguos(AsignacionBase):
             how='left'
         )
 
+        export_path = f"{self.path_export}/results/recursos_xcno_{self.nombre_ruta}.xlsx"
+        grouped.to_excel(export_path, index=False)
+
         return grouped
 
     def exportar_recursos_por_cno(self):

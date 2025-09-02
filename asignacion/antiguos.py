@@ -79,15 +79,16 @@ class AsignacionAntiguos(AsignacionNuevosAntiguos):
             False, #6 ->Regla de desempate
             True #7 ->Regla de desempate
         ]
-        
-        # Ordenar las filas válidas
-        sin_nan = sin_nan.sort_values(
-            columnas, 
-            ascending= orden
+                
+        sin_nan = (
+            sin_nan.sort_values(by=columnas, ascending=orden)
+                .reset_index(drop=True)
+                .assign(orden_priorizacion=lambda x: range(1, len(x)+1))
         )
-    
-        # Concatenar
-        self.data = sin_nan.reset_index(drop=True)
+
+        
+        self.data = sin_nan
+
 
     def _asignar_recursos_primera_etapa(self):
         """
@@ -121,15 +122,19 @@ class AsignacionAntiguos(AsignacionNuevosAntiguos):
                     #El saldo es suficiente para financiar todos los cupos
                     data.loc[i, 'cupos_asignados'] = cupos_disp
                     saldo -= recurso_necesario
-                elif saldo >= recurso_necesario_minimo:
-                    # El saldo es suficiente para financiar el mínimo de cupos 
-                    data.loc[i, 'cupos_asignados'] = cupos_minimos_disp
-                    saldo -= recurso_necesario_minimo
+                elif recurso_necesario >= saldo >= recurso_necesario_minimo:
+                    # Evaluar cuantos cupos por encima del mínimo se pueden ofrecer
+                    cupos_asignables = saldo // costo_unitario
+                    data.loc[i, 'cupos_asignados'] = cupos_asignables
+                    saldo -= cupos_asignables * costo_unitario
+
                 else:
                     #El saldo no es suficiente: continuar con el siguiente programa priorizado
                     data.loc[i, 'cupos_asignados'] = 0
                     continue
-    
+
+
+                    
         # Paso 3: Calcular recursos efectivamente asignados por programa y cupos restantes por asignar
         data['recurso_asignado'] = data['cupos_asignados'] * data['valor_programa']
         data['cupos_sobrantes'] = data['numero_cupos_ofertar'] - data['cupos_asignados']

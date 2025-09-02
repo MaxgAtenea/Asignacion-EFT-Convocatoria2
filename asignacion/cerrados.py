@@ -42,7 +42,7 @@ class AsignacionCerrados(AsignacionBase):
         
         data['cupos_asignados'] = 0  
         data['recurso_asignado'] = 0.0
-        data['saldo_total_remanente'] = 0.0
+        #data['saldo_total_remanente'] = 0.0
     
     
         saldo_total = self.recursos_iniciales
@@ -54,7 +54,7 @@ class AsignacionCerrados(AsignacionBase):
 
             #TO DO: esta condicion debería ser parte del contrato de la clase AsignacionBase()
             if pd.isna(costo_unitario) or costo_unitario <= 0 or pd.isna(cupos_disp) or cupos_disp <= 0:
-                data.at[idx, 'saldo_total_remanente'] = saldo_total
+                #data.at[idx, 'saldo_total_remanente'] = saldo_total
                 continue
     
             recurso_necesario = costo_unitario * cupos_disp
@@ -66,17 +66,20 @@ class AsignacionCerrados(AsignacionBase):
                 data.at[idx, 'recurso_asignado'] = recurso_necesario
                 saldo_total -= recurso_necesario
                 
-            elif saldo_total>=recurso_necesario_minimo:
-                # El saldo es suficiente para financiar el mínimo de cupos 
-                data.at[idx, 'cupos_asignados'] = cupos_minimos_disp
-                data.at[idx, 'recurso_asignado'] = recurso_necesario_minimo
-                saldo_total -= recurso_necesario_minimo                
+            elif recurso_necesario >= saldo_total >= recurso_necesario_minimo:
+                
+                cupos_posibles = saldo_total // costo_unitario
+                recurso_asignado = cupos_posibles * costo_unitario
+                
+                data.at[idx, 'cupos_asignados'] = cupos_posibles
+                data.at[idx, 'recurso_asignado'] = recurso_asignado
+                saldo_total -= recurso_asignado
             else:
-                #El saldo no es suficiente: continuar con el siguiente programa priorizado      
+                #El saldo no es suficiente: continuar con el siguiente programa priorizado  
                 data.at[idx, 'cupos_asignados'] = 0
                 data.at[idx, 'recurso_asignado'] = 0
     
-            data.at[idx, 'saldo_total_remanente'] = saldo_total
+            #data.at[idx, 'saldo_total_remanente'] = saldo_total
     
             if saldo_total <= 0:
                 break
@@ -127,7 +130,11 @@ class AsignacionCerrados(AsignacionBase):
     
         orden += [False, False, False, True, True]
     
-        self.data = df.sort_values(by=columnas, ascending=orden).reset_index(drop=True)
+        self.data = (
+            df.sort_values(by=columnas, ascending=orden)
+                .reset_index(drop=True)
+                .assign(orden_priorizacion=lambda x: range(1, len(x)+1))
+        )
 
     def _identificar_programas_disponibles(self):
         """
@@ -137,7 +144,7 @@ class AsignacionCerrados(AsignacionBase):
         
         grupos_cerrados_remanente = data[
             data['cupos_sobrantes'] > 0
-        ].reset_index(drop=True)
+        ]#.reset_index(drop=True)
 
         self.programas_remanente = grupos_cerrados_remanente
 

@@ -41,7 +41,7 @@ class AsignacionBase:
         
         self.__llave_cruce = "codigo_programa" #llave para cruzar los documentos crudos
         self.path_load = "../input/"
-        self.path_export = "output/"
+        self.path_export = "../output/"
         self._subdirectorio_resultados = "results/"
         self._columnas_relevantes = COLUMNAS_EXTERNO #+ COLUMNAS_COMPLEMENTO
         self._errores_validacion = []
@@ -106,6 +106,7 @@ class AsignacionBase:
         
         # Guardar resultado como atributo de instancia
         self.data = Programas_EFT[self._columnas_relevantes]
+        self.data['uid'] = self.data.index
 
     def validar_datos(self, nombre_archivo_externo, dict_nombres = NOMBRE_COLUMNAS_MAPPING_EXTERNO, dict_tipado = TIPO_COLUMNAS_MAPPING_EXTERNO) -> None:
         """
