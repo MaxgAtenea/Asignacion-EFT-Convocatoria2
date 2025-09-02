@@ -10,7 +10,7 @@ class AsignacionCerrados(AsignacionBase):
     Clase encargada de gestionar la asignación de recursos para la ruta 'Cerrados'.
     """
 
-    def __init__(self, data, recursos_iniciales =  None):
+    def __init__(self, data, recursos_iniciales =  None, col_cupos_reemplazo = "numero_cupos_ofertar"):
         
         if recursos_iniciales:
             super().__init__(recursos_iniciales)
@@ -21,7 +21,7 @@ class AsignacionCerrados(AsignacionBase):
         self.primera_asignacion = pd.DataFrame()
         
         #Ordenamos programas siguiendo criterios (condición necesaria y previa para la asignacion de recursos)
-        self._ordenar_programas()     
+        self._ordenar_programas(col_cupos_reemplazo = col_cupos_reemplazo)     
         
         #Garantiza que al instanciar la clase, se calcule la asignacion
         self.asignar_recursos()
@@ -93,7 +93,7 @@ class AsignacionCerrados(AsignacionBase):
 
         self.primera_asignacion = data
 
-    def _ordenar_programas(self,usar_cod_cno=False):
+    def _ordenar_programas(self,usar_cod_cno=False, col_cupos_reemplazo = "numero_cupos_ofertar" ):
         """
         Ordena los programas dentro del DataFrame según criterios establecidos.
         Si usar_cod_cno es True, cod_CNO se usará como primer criterio de orden.
@@ -106,8 +106,11 @@ class AsignacionCerrados(AsignacionBase):
         4. Mayor meta de vinculación
         5. Menor costo_unitario
         6. Menor duración
+        7. IPO
+        8. ISOEFT
     .
-    
+        Params:
+            col_cupos_reemplazo: Distingue la columna original de numero_cupos_ofertar
         Retorna:
             pd.DataFrame: DataFrame ordenado según los criterios establecidos.
         """
@@ -122,13 +125,15 @@ class AsignacionCerrados(AsignacionBase):
     
         columnas += [
             'puntaje',
-            'numero_cupos_ofertar',
+            col_cupos_reemplazo,
             'meta_vinculacion',
             'valor_programa',
-            'duracion_horas_programa'
+            'duracion_horas_programa',
+            'ipo',
+            'isoeft'
         ]
     
-        orden += [False, False, False, True, True]
+        orden += [False, False, False, True, True, False, False]
     
         self.data = (
             df.sort_values(by=columnas, ascending=orden)

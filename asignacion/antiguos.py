@@ -57,7 +57,7 @@ class AsignacionAntiguos(AsignacionNuevosAntiguos):
 
         # filtrar NaN en isoeft: 
         #TO DO: esta condicion se podrá eliminar una vez se incluya la verificacion en la lectura de los datos en AsignacionBase() ->base.py
-        sin_nan = self.data[self.data['isoeft'].notna()]
+        #sin_nan = self.data[self.data['isoeft'].notna()]
     
         #Columnas para ordenar
         columnas = [
@@ -79,15 +79,16 @@ class AsignacionAntiguos(AsignacionNuevosAntiguos):
             False, #6 ->Regla de desempate
             True #7 ->Regla de desempate
         ]
-                
-        sin_nan = (
-            sin_nan.sort_values(by=columnas, ascending=orden)
+
+        #sin_nan 
+        self.data = (
+            self.data.sort_values(by=columnas, ascending=orden)
                 .reset_index(drop=True)
                 .assign(orden_priorizacion=lambda x: range(1, len(x)+1))
         )
 
         
-        self.data = sin_nan
+        #self.data = sin_nan
 
 
     def _asignar_recursos_primera_etapa(self):
@@ -107,12 +108,13 @@ class AsignacionAntiguos(AsignacionNuevosAntiguos):
             indices = grupo.index
     
             for i in indices:
+                isoeft = data.loc[i,'isoeft']
                 costo_unitario = data.loc[i, 'valor_programa']
                 cupos_disp = data.loc[i, 'numero_cupos_ofertar']
                 cupos_minimos_disp = data.loc[i, 'numero_minimo_cupos']
 
                 ## TODO: Esta condicion deberia verificarse desde la fuente
-                if pd.isna(costo_unitario) or costo_unitario == 0:
+                if pd.isna(isoeft) or isoeft == 0:
                     continue
     
                 recurso_necesario = cupos_disp*costo_unitario

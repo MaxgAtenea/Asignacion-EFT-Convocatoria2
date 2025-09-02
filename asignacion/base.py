@@ -105,7 +105,7 @@ class AsignacionBase:
             print(f"Programas que NO cruzaron: {no_cruzaron}")
         
         # Guardar resultado como atributo de instancia
-        self.data = Programas_EFT[self._columnas_relevantes]
+        self.data = Programas_EFT[self._columnas_relevantes].copy()
         self.data['uid'] = self.data.index
 
     def validar_datos(self, nombre_archivo_externo, dict_nombres = NOMBRE_COLUMNAS_MAPPING_EXTERNO, dict_tipado = TIPO_COLUMNAS_MAPPING_EXTERNO) -> None:
