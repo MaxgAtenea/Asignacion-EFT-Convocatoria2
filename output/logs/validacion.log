@@ -79,3 +79,33 @@
 - Tipo incorrecto en 'MODALIDAD': se esperaba 'str', se encontró 'object'
 - Tipo incorrecto en 'Ocupacion': se esperaba 'str', se encontró 'object'
 - Tipo incorrecto en 'RUTA HABILITADA': se esperaba 'str', se encontró 'object'
+
+--- LOG DE VALIDACIÓN (2025-09-02 18:35:08.056040): ---
+- Columnas con espacios al inicio o final: ['VALOR SEMESTRE ']
+- Columnas con valores nulos: ['ISOEFT']
+- Tipo incorrecto en 'NOMBRE DEL PROGRAMA': se esperaba 'str', se encontró 'object'
+- Tipo incorrecto en 'Nombre Institucion': se esperaba 'str', se encontró 'object'
+- Tipo incorrecto en 'JORNADA_PROGRAMA': se esperaba 'str', se encontró 'object'
+- Tipo incorrecto en 'MODALIDAD': se esperaba 'str', se encontró 'object'
+- Tipo incorrecto en 'Ocupacion': se esperaba 'str', se encontró 'object'
+- Tipo incorrecto en 'RUTA HABILITADA': se esperaba 'str', se encontró 'object'
+
+--- LOG DE VALIDACIÓN (2025-09-02 18:36:16.501364): ---
+- Columnas con espacios al inicio o final: ['VALOR SEMESTRE ']
+- Columnas con valores nulos: ['ISOEFT']
+- Tipo incorrecto en 'NOMBRE DEL PROGRAMA': se esperaba 'str', se encontró 'object'
+- Tipo incorrecto en 'Nombre Institucion': se esperaba 'str', se encontró 'object'
+- Tipo incorrecto en 'JORNADA_PROGRAMA': se esperaba 'str', se encontró 'object'
+- Tipo incorrecto en 'MODALIDAD': se esperaba 'str', se encontró 'object'
+- Tipo incorrecto en 'Ocupacion': se esperaba 'str', se encontró 'object'
+- Tipo incorrecto en 'RUTA HABILITADA': se esperaba 'str', se encontró 'object'
+
+--- LOG DE VALIDACIÓN (2025-09-02 18:37:44.503916): ---
+- Columnas con espacios al inicio o final: ['VALOR SEMESTRE ']
+- Columnas con valores nulos: ['ISOEFT']
+- Tipo incorrecto en 'NOMBRE DEL PROGRAMA': se esperaba 'str', se encontró 'object'
+- Tipo incorrecto en 'Nombre Institucion': se esperaba 'str', se encontró 'object'
+- Tipo incorrecto en 'JORNADA_PROGRAMA': se esperaba 'str', se encontró 'object'
+- Tipo incorrecto en 'MODALIDAD': se esperaba 'str', se encontró 'object'
+- Tipo incorrecto en 'Ocupacion': se esperaba 'str', se encontró 'object'
+- Tipo incorrecto en 'RUTA HABILITADA': se esperaba 'str', se encontró 'object'

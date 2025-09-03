@@ -23,7 +23,7 @@ class AsignacionAntiguos(AsignacionNuevosAntiguos):
         #TODO: Definir contrato
         self.data = data.copy()
         #TO DO: Este filtro es temporal, porque debería venir del contrato de la clase AsignacionBase()
-        self.data = self.data[self.data['isoeft'].notna()]
+        #self.data = self.data[self.data['isoeft'].notna()]
         
         #Atributos para guardar los recursos de la primera y segunda asignacion de recursos
         self.primera_asignacion = pd.DataFrame()
